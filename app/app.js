@@ -1,16 +1,17 @@
 "use strict";
 var express = require("express"),
     routes = require('./routes.js'),
-    app;
+    app,
+    server;
 
 app = express();
 routes(app);
 //startar servern
 
-var start = function(){
-    app.listen(8080);
-    console.log('awesome! Just get started!');
+var start = exports.start = function(){
+    server = app.listen(8080);
 };
 
-module.exports = start;
-
+var stop = exports.stop = function(){
+    server.close();
+};
