@@ -7,6 +7,9 @@ module.exports = function(app){
     })
     app.get('/latlong',
     function(req,res){
-        latlong.getLatLong('uppsala').then(function(data){res.send(data);});
+        latlong.getLatLong('boras')
+            .then(function(data){
+                res.send(data);
+            });
     })
 }

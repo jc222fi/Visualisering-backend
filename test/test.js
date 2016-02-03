@@ -11,27 +11,23 @@ var chai = require('chai'),
     latlong = require('../app/latlong');
 
 chai.use(chaiAsPromised);
-var baseUrl = '/';
 
 describe('Testing routes', function () {
-    //myApp.start();
-
+    var baseUrl = '/';
         it('should return a 200 response', function (done) {
             local.get(baseUrl)
             .set('Accept', 'application/json')
             .expect(200,done);
-            //myApp.stop();
         });
-
 });
 
 describe('LatLong',function(){
-//myApp.start();
     it('should eventually return a new object with lat-long added', function(done){
-        latlong.getLatLong('uppsala').should.eventually.notify(200);
+        latlong.getLatLong('uppsala').should.eventually.notify(200)
+            latlong.getLatLong('uppala').then(function(data){
+            expect(data[0]).to.have.property("type");
+        },function(err){console.log(err)});
         done();
-        //myApp.stop();
-
     });
 });
 
