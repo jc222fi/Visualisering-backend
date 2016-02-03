@@ -10,9 +10,11 @@ routes(app);
 
 var start = exports.start = function(){
     server = app.listen(8080);
+    console.log('server');
 };
 
 var stop = exports.stop = function(){
+    console.log('close');
     server.close();
 };
 
