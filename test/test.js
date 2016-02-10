@@ -9,15 +9,12 @@ let chai = require('chai'),
     osm = supertest('http://nominatim.openstreetmap.org'),
     myApp = require('../app/app.js'),
     latlong = require('../app/latlong'),
-    students = require('../app/students');
+    students = require('../app/students'),
     user = require('../app/models/User');
 
 
 chai.use(chaiAsPromised);
 
-before(function() {
-   let user = new user("js223kz", "Falsterbo, 1.2345677, 1.4567899");
-});
 
 describe('Testing routes', function () {
     let baseUrl = '/';
@@ -82,10 +79,10 @@ describe('Open file', function(){
 describe('User',function(){
     it('should create new user', function(done){
         user = new user("js223kz", "Falsterbo", 1.2345677, 1.4567899);
-        expect(student.userName).to.equal("js223kz");
-        expect(student.city).to.equal("Falsterbo");
-        expect(student.longitude).to.equal(1.2345677);
-        expect(student.latitude).to.equal( 1.4567899);
+        expect(user.userName).to.equal("js223kz");
+        expect(user.city).to.equal("Falsterbo");
+        expect(user.lat).to.equal(1.2345677);
+        expect(user.long).to.equal( 1.4567899);
         done();
     });
 });
