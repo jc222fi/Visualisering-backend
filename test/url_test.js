@@ -44,48 +44,6 @@ describe('Open file', function(){
                 console.log(err);
         });
         done();
-    });
-    it('create objects with city, githubusername and lat-long',function(done){
-     //let student = {
-     //        userName: undefined,
-     //        city: undefined,
-     //        latitude: undefined,
-     //        longitude: undefined
-     //    };
-
-        students().then(function(data){
-            data.forEach(function(element){
-                student.userName = element.github;
-                student.city = element.city;
-
-                latlong.getLatLong(element.city).then(function(osmData){
-                    osmData.forEach(function(element){
-                        if(element.type === 'city'){
-                            student.latitude = element.latitude;
-                            student.longitude = element.longitude;
-                        }
-                    });
-                });
-            assert(student.userName !== undefined);
-                assert(student.city !== undefined);
-                assert(student.longitude !== undefined);
-                assert(student.latitude !== undefined);
-            })
-        })
-    done();
-    })
+    });    
 });
-
-describe('User',function(){
-    it('should create new user', function(done){
-        user = new user("js223kz", "Falsterbo", 1.2345677, 1.4567899);
-        expect(user.userName).to.equal("js223kz");
-        expect(user.city).to.equal("Falsterbo");
-        expect(user.lat).to.equal(1.2345677);
-        expect(user.long).to.equal( 1.4567899);
-        done();
-    });
-});
-
-
 
