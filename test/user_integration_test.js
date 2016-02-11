@@ -6,8 +6,6 @@ let chai = require('chai'),
     supertest = require('supertest'),
     request = require('superagent');
 
-
-
 chai.use(chaiAsPromised);
 
 /*
