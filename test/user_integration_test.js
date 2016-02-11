@@ -4,12 +4,8 @@ let chai = require('chai'),
     should = require('chai').should(),
     expect = require('chai').expect,
     supertest = require('supertest'),
-    request = require('superagent'),
-    local = supertest('http://localhost:8080'),
-    osm = supertest('http://nominatim.openstreetmap.org'),
-    myApp = require('../app/app.js'),
-    latlong = require('../app/latlong'),
-    user = require('../app/models/User');
+    request = require('superagent');
+
 
 
 chai.use(chaiAsPromised);

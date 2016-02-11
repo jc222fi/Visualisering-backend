@@ -4,7 +4,7 @@ let chai = require('chai'),
     should = require('chai').should(),
     expect = require('chai').expect,
     supertest = require('supertest'),
-    user = require('../app/models/User');
+    user = require('../app/models/user');
 
 
 chai.use(chaiAsPromised);
