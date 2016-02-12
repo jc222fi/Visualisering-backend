@@ -1,19 +1,16 @@
 "use strict";
 class User {
+    
     constructor(userName, city, lat, long) {
-        if(userName && city && lat && long){
-            this.userName = userName;
-            this.city = city;
-            this.lat = lat;
-            this.long = long;
-        }else{
-            throw new Exeption();
-        }
+        this._userName = userName;
+        this._city = city;
+        this._lat = lat;
+        this._long = long;       
     }
     
     set userName(value) {
         if (!value) {
-          throw new Error('Username must have a value');
+          throw Error('Username must have a value');
         }
         this._userName = value;
     }
@@ -41,21 +38,3 @@ class User {
 }
 
 module.exports = User;
-
-/*var User = function(userName, city, lat, long){
-    if(userName && city && lat && long){
-            this.userName = userName;
-            this.city = city;
-            this.lat = lat;
-            this.long = long;
-    }else{
-        throw new Exeption();
-    }
-};
-
-module.exports = User;*/
-
-
-//Så här skapar man en ny instans från en annan fil
-//import MyClass from 'MyClass';
-//const inst = new MyClass();

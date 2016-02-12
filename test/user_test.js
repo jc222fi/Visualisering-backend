@@ -12,48 +12,61 @@ let chai = require('chai'),
 chai.use(chaiAsPromised);
 
 describe('User object',function(){
-    let user;
-    
-    beforeEach(function () {
-        user = new User("js223kz", "Falsterbo", 1.2345677, 1.4567899);
-        expect(user).to.not.equal(undefined); 
-        //expect it to be object
-        //expect it to have four properties
+    it('should be a valid user object', function(done){
+       let user = new User("js223kz", "Falsterbo", 1.2345677, 1.4567899);
+        expect(user).to.be.an('object');
+        expect(user._city).to.equal("Falsterbo");
+        expect(user._userName).to.equal("js223kz");
+        expect(user._lat).to.equal(1.2345677);
+        expect(user._long).to.equal(1.4567899);
+        done();
     });
     
    it('should not be valid with empty username', function(done){
-        var fn = function() { user.userName = '' };
-        expect(fn).to.throw(Error, 'Username must have a value');
+        function withoutUserName() {
+            new User(" ", "Falsterbo", 1.2345677, 1.4567899)
+        }
+        expect(withoutUserName).to.throw;
         done();
     });
     
     it('should not be valid with empty city', function(done){
-        var fn = function() { user.city = '' };
-        expect(fn).to.throw(Error, 'City must have a value');
+        function withoutCity() {
+            new User("js223kz", " ", 1.2345677, 1.4567899)
+        }
+        expect(withoutCity()).to.throw;
         done();
     });
     
     it('should not be valid with empty latitude', function(done){
-        var fn = function() { user.lat = '' };
-        expect(fn).to.throw(Error, 'Latitude must have a numeric value');
+        function withoutLat() {
+            new User("js223kz", "Falsterbo"," ", 1.4567899)
+        }
+        expect(withoutLat()).to.throw;
         done();
     });
     
     it('should not be valid with empty longitude', function(done){
-        var fn = function() { user.long = '' };
-        expect(fn).to.throw(Error, 'Longitude must have a numeric value');
+        function withoutLon() {
+            new User("js223kz", "Falsterbo", 1.4567899, "")
+        }
+        expect(withoutLon()).to.throw;
         done();
     });
     
     it('should only accept numeric latitude', function(done){
-        var fn = function() { user.lat = 'hkjhkjhkhk' };
-        expect(fn).to.throw(Error, 'Latitude must have a numeric value');
+        function notNumeric() {
+            new User("js223kz", "Falsterbo","jkashjahk", 1.4567899)
+        }
+        expect(notNumeric()).to.throw;
         done();
     });
     
     it('should only accept numeric longitude', function(done){
-        var fn = function() { user.long = 'ihohihohioh' };
-        expect(fn).to.throw(Error, 'Longitude must have a numeric value');
+        function notNumeric() {
+            new User("js223kz", "Falsterbo", 1.4567899, "jfjiwjefoji")
+        }
+        expect(notNumeric()).to.throw;
         done();
     });
     

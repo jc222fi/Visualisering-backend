@@ -1,17 +1,18 @@
 "use strict";
-var fs = require('fs');
+let fs = require('fs');
 
-module.exports=function(){
-    return new Promise(function(resolve, reject){
-        let students;
+class StudentApi {
 
-    fs.readFile('../app/example_students.json', function (error, data) {
-        if (error) {
-            reject(error);
-        }
-
-        students = JSON.stringify(data);
-        resolve(obj);
+    getStudents(){
+        return new Promise(function(resolve, reject){
+           fs.readFile('../app/files/example_students.json',
+                       {encoding: 'utf8'}, function (error, data) {
+                if (error) {
+                    reject(error);
+                }
+                resolve(JSON.parse(data));
+            });
         });
-    });
+    }   
 }
+module.exports = StudentApi;

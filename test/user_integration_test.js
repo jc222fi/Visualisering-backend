@@ -5,7 +5,7 @@ let chai = require('chai'),
     expect = require('chai').expect,
     supertest = require('supertest'),
     request = require('superagent'),
-    students = require('../app/models/student-api'),
+    StudentApi = require('../app/models/student-api'),
     user = require('../app/models/user'),
     osm = require('../app/models/open-street-map-api');
 
@@ -17,16 +17,19 @@ describe('Create User with data from api', function(){
     let city = undefined;
     let lat = undefined;
     let lng = undefined;
+    
+    let studentApi = new StudentApi();
+
     it('should chain api calls to create a user object',function(done){
-            students().then(function(data){
+            studentApi.getStudents().then(function(data){
             data.forEach(function(element){
                 username = element.github;
                 city = element.city;
                 osm.getLatLong(element.city).then(function(positionData){
-                    osmData.forEach(function(position){
+                    positionData.forEach(function(position){
                         if(position.type === 'city'){
-                            lat = element.latitude;
-                            lng = element.longitude;
+                            lat = position.latitude;
+                            lng = position.longitude;
                         }
                     });
                 let user = new User(username, city, lat, lng);
