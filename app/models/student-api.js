@@ -11,7 +11,7 @@ module.exports=function(){
             reject(error);
         }
         students = JSON.stringify(data);
-        resolve(obj);
+        resolve(students);
         });
     });
 }
