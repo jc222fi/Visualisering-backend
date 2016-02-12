@@ -1,25 +1,26 @@
-$(function () {
+(function () {
     // if user is running mozilla then use it's built-in WebSocket
-    window.WebSocket = window.WebSocket || window.MozWebSocket;
+        window.WebSocket = window.WebSocket || window.MozWebSocket;
 
-    var connection = new WebSocket('ws://127.0.0.1:8080');
+        var connection = new WebSocket('ws://127.0.0.1:8000');
 
-    connection.onopen = function () {
-       console.log('open');
+        connection.onopen = function () {
+        console.log('hello websocket');
     };
 
     connection.onerror = function (error) {
-        // an error occurred when sending/receiving data
+        console.log('an error occurred when sending/receiving data' + err);
     };
 
     connection.onmessage = function (message) {
-        // try to decode json (I assume that each message from server is json)
         try {
-            var json = JSON.parse(message.data);
+            json = JSON.parse(message.data);
+            console.log(json);
+            var websocketdiv = document.querySelector('#websockets');
+            websocketdiv.innerHTML = json;
         } catch (e) {
             console.log('This doesn\'t look like a valid JSON: ', message.data);
             return;
         }
-        // handle incoming message
     };
-});
+})();

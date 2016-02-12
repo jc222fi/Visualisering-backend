@@ -1,20 +1,17 @@
 "use strict";
-var latlong = require('./models/open-street-map-api');
+var latlong = require('./models/open-street-map-api'),
+    websocket = require('./controller/websocket.js');
 
 module.exports = function(app){
     app.get('/',function(req, res){
-        res.send('Hej front-end');
+        res.render('index');
     });
+
     app.get('/latlong',
     function(req,res){
         latlong.getLatLong('boras')
             .then(function(data){
                 res.send(data);
             });
-    });
-
-    app.get('/websockets',
-    function(req,res){
-        res.render('websocket.ejs');
     });
 }
