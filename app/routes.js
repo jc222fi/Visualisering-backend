@@ -19,6 +19,7 @@ module.exports = function(app){
             students.forEach(function(student){
                 username = student.services.github;
                 city = student.city; 
+                
                 osm.getLatLong(city).then(function(positionData){
                     positionData.forEach(function(position){
                         if(position.type === 'city'){
