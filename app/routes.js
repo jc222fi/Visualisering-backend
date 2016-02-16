@@ -1,41 +1,28 @@
 "use strict";
 let osm = require('../app/models/open-street-map-api'),
-    StudentApi = require('../app/models/student-api'),
-    User = require('../app/models/user.js');
+    UserApi = require('../app/models/user-api'),
+    User = require('../app/models/user');
 
 module.exports = function(app){
     app.get('/',function(req, res){
         res.send('Hej front-end');
     })
     app.get('/latlong', function(req,res){
-        let username = undefined;
-        let city = undefined;
-        let lat = undefined;
-        let lng = undefined;
-        let user = undefined;
-
-        let studentApi = new StudentApi();
-        studentApi.getStudents().then(function(students){
-            students.forEach(function(student){
-                username = student.services.github;
-                city = student.city; 
-                
-                osm.getLatLong(city).then(function(positionData){
-                    positionData.forEach(function(position){
-                        if(position.type === 'city'){
-                            lat = position.lat;
-                            lng = position.lon;
-                            user = new User(username, city, lat, lng);
-                        }
-                    });
+        let userApi = new UserApi();
+        userApi.getUsers().then(function(users){
+            userApi.createUserObject(users).then(function(userObjects){
+                console.log(userObjects);
+                userApi.saveObjectsToFile(userObjects).then(function(){
+                    
                 }, function(error){
-                    console.log(error.message);
+                    console.log(error);
                 });
-            });
+            }, function(error){
+                console.log(error);
+            })
         }, function(error){
-            console.log(error.message);
-        });
-         res.send("hello from latlong"); 
-    });
+            console.log(error);
+        })
+        res.send("hello from latlong");
+    });   
 }
-
