@@ -11,7 +11,6 @@ module.exports = function(app){
         let userApi = new UserApi();
         userApi.getUsers().then(function(users){
             userApi.createUserObject(users).then(function(userObjects){
-                console.log(userObjects);
                 userApi.saveObjectsToFile(userObjects).then(function(){
                     
                 }, function(error){

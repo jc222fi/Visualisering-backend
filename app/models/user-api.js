@@ -1,14 +1,16 @@
 "use strict";
 
- let fs = require('fs');
+ let fs = require('fs'),
+     User = require('../../app/models/User'),
+     request = require('request');
+     
     
 
 class UserApi {
    
-    
     getUsers(){
         return new Promise(function(resolve, reject){
-            let request = require('request');
+            
             //this url should be read from config file
             request.get('http://localhost:8080/files/mock-up-users.json', 
                         function (error, response, body) {
@@ -26,11 +28,11 @@ class UserApi {
             });
         });
     } 
+    
     createUserObject(users){
         return new Promise(function(resolve, reject){
-            let User = require('/models/users.js');
+            
             let usersArray = [];
-            console.log("inne i funktionen");
             users.forEach(function(user){
                 //should be an try catch when saving as User object
                 //reject if catch
@@ -38,15 +40,13 @@ class UserApi {
                                        user.city, user.lat, user.lng);
                 usersArray.push(newUser);
             });
-            console.log(usersArray);
             resolve(usersArray);
         });
     }
     
     saveObjectsToFile(objectsArray){
-        objectsArray.forEach(function(user){
-            console.log(user);
-        });
+        let path = '../../app/files/users.txt';
+        //save users to file?
     }
 }
 module.exports = UserApi;
