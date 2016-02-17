@@ -17,8 +17,4 @@ describe('Websockets', function(){
         done();
         });
 
-    //todo: move to manual test
-    // it('should send message to client', function (done) {
-    //    done();
-    //});
 });

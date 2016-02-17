@@ -4,7 +4,7 @@ var latlong = require('./models/open-street-map-api'),
 
 module.exports = function(app){
     app.get('/',function(req, res){
-        res.render('websocket.ejs');
+        res.render('index.ejs');
     });
 
     app.get('/latlong',
