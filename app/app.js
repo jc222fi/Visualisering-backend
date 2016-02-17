@@ -24,6 +24,4 @@ var stop = exports.stop = function(){
     server.close();
 };
 
-//module.exports = {start, stop};
-
 start();

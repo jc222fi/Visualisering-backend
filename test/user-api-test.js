@@ -18,15 +18,17 @@ describe('Testing user-api', function () {
         .expect(200, done);
     });
     
-    //need help with this one should´t be green sice 
     it('should return correct properties', function (done) {
         local.get(baseUrl)
         .set('Accept', 'application/json')
         .end(function(err, res) {
             let items = res.body;
             items.forEach(function(item){
-                expect(item).to.not.have.property('vetefanmendenhärfinnsinte');
+                expect(item).to.not.have.property('denhärskaintefinnas');
                 expect(item).to.have.property('city');
+                expect(item).to.have.property('lat');
+                expect(item).to.have.property('lng');
+                expect(item).to.have.property('services').to.have.property('github');
             })
             done();
         })
