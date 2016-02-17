@@ -1,17 +1,27 @@
 "use strict";
-var latlong = require('./models/open-street-map-api'),
-    websocket = require('./controller/websocket.js');
+let osm = require('../app/models/open-street-map-api'),
+    UserApi = require('../app/models/user-api'),
+    User = require('../app/models/user');
 
 module.exports = function(app){
     app.get('/',function(req, res){
-        res.render('index.ejs');
-    });
-
-    app.get('/latlong',
-    function(req,res){
-        latlong.getLatLong('boras')
-            .then(function(data){
-                res.send(data);
-            });
-    });
+        res.send('Hej front-end');
+    })
+    app.get('/latlong', function(req,res){
+        let userApi = new UserApi();
+        userApi.getUsers().then(function(users){
+            userApi.createUserObject(users).then(function(userObjects){
+                userApi.saveObjectsToFile(userObjects).then(function(data){
+                  return data;
+                }, function(error){
+                    console.log(error);
+                });
+            }, function(error){
+                console.log(error);
+            })
+        }, function(error){
+            console.log(error);
+        })
+        res.send("hello from latlong");
+    });   
 }
