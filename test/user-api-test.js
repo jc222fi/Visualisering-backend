@@ -22,11 +22,13 @@ describe('Testing user-api', function () {
     it('should return correct properties', function (done) {
         local.get(baseUrl)
         .set('Accept', 'application/json')
-        .expect(function(res) {
-            var item = JSON.parse(res.responseText);
-            item.should.have.property('city')
-            item.should.have.property('vetefanmendenhärfinnsinte')
+        .end(function(err, res) {
+            let items = res.body;
+            items.forEach(function(item){
+                expect(item).to.not.have.property('vetefanmendenhärfinnsinte');
+                expect(item).to.have.property('city');
+            })
+            done();
         })
-        done();
     });
 });
