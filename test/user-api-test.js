@@ -4,8 +4,8 @@ let chai = require('chai'),
     should = require('chai').should(),
     expect = require('chai').expect,
     supertest = require('supertest'),
-    local = supertest('http://localhost:8080/'),
-    app = require('../app/app');
+    local = supertest('http://localhost:8080'),
+    app = require('../app.js');
 
 chai.use(chaiAsPromised);
 //url should be read from config file

@@ -12,6 +12,13 @@ app.set('port', (process.env.PORT || 8080));
 app.use(express.static(__dirname+'/app/view/'));
 app.set('views', __dirname + '/app/view/');
 
+
+//This line should be removed when
+//students json is reaquested
+//from remote source
+app.use("/files", express.static(__dirname + '/files'));
+
+
 //view engine = ejs
 app.set('view engine', 'ejs');
 

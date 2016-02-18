@@ -2,8 +2,9 @@
 
 let chai = require('chai'),
     expect = require('chai').expect,
-    Commit = require('../app/models/commit'),
-    User =  require('../app/models/user');
+    Commit = require('../app/models/commit.js'),
+    User =  require('../app/models/user.js');
+
 
 describe('Commit object',function(){
     let user = undefined; 
