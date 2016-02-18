@@ -5,11 +5,10 @@ class User {
         this._userName = userName;
         this._city = city;
         this._lat = lat;
-        this._long = long;       
+        this._lng = long;       
     }
     
     set userName(value) {
-        console.log("går iallafall in i denna");
         if (!value) {
           throw Error('Username must have a value');
         }
@@ -30,11 +29,11 @@ class User {
         this._lat = value;
     }
     
-     set long(value) {
+     set lng(value) {
         if (!value || typeof value !== 'number') {
           throw new Error('Longitude must have a numeric value');
         }
-        this._long = value;
+        this._lng = value;
     }
 }
 

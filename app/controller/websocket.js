@@ -11,7 +11,7 @@ const data =
             _long:"16.356824"
         },
         _timestamp: '2016-02-17T10:39:23Z',
-        _code:"" 
+        _code:"Här kommer kod" 
     },
    {
         _owner: 'Visualisering',
@@ -22,7 +22,7 @@ const data =
             _long:"12.841880"
         },
         _timestamp: '2016-02-17T15:39:23Z',
-        _code:"" 
+        _code:"Här kommer lite mer kod" 
 
     },
     {
@@ -34,7 +34,7 @@ const data =
             _long:"12.939528"
         },
         _timestamp: '2016-02-18T10:39:23Z',
-        _code: ""
+        _code: "Här kommer ännu mer kod"
 
     },
      {
@@ -46,7 +46,7 @@ const data =
             _long:"20.262560"
         },
         _timestamp: '2016-02-18T15:39:23Z',
-        _code: ""
+        _code: "Härkommer ännu ännu mer kod"
 
     },
     {
@@ -58,7 +58,7 @@ const data =
             _long:"14.805126"
         },
         _timestamp: '2016-02-17T22:39:23Z',
-        _code: ""
+        _code: "Här kommer mest kod"
 
     }   
 ]

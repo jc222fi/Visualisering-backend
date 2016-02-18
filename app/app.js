@@ -14,6 +14,7 @@ routes(app);
 //from remote source
 app.use("/files", express.static(__dirname + '/files'));
 
+
 //startar servern
 var start = exports.start = function(){
     server = app.listen(8080);

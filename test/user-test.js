@@ -5,62 +5,70 @@ let chai = require('chai'),
     User = require('../app/models/user.js');
 
 describe('User object',function(){
-    it('should be a valid user object', function(done){
-       let user = new User("js223kz", "Falsterbo", 1.2345677, 1.4567899);
+    let user = undefined;
+    
+    beforeEach(() => {
+        user = new User("js223kz", "Falsterbo", 1.2345677, 1.4567899);
+    }); 
+    
+     it('should return an object', () => {
         expect(user).to.be.an('object');
-        expect(user._city).to.equal("Falsterbo");
-        expect(user._userName).to.equal("js223kz");
-        expect(user._lat).to.equal(1.2345677);
-        expect(user._long).to.equal(1.4567899);
-        done();
+        expect(user).to.be.an.instanceof(User);
+        
     });
     
-   it('should not be valid with empty username', function(done){
-        function withoutUserName() {
-            new User(" ", "Falsterbo", 1.2345677, 1.4567899)
-        }
-        expect(withoutUserName).to.throw;
-        done();
+    it('properties should be of right type', () => {
+        expect(user._userName).to.be.a("string");
+        expect(user._city).to.be.an('string');
+        expect(user._lat).to.be.a('number');
+        expect(user._lng).to.be.a('number');       
     });
     
-    it('should not be valid with empty city', function(done){
-        function withoutCity() {
-            new User("js223kz", " ", 1.2345677, 1.4567899)
-        }
-        expect(withoutCity()).to.throw;
-        done();
+    it('userName can not be empty', () => {
+      () => {
+        user.userName = '';
+      }.should.throw(Error);
     });
     
-    it('should not be valid with empty latitude', function(done){
-        function withoutLat() {
-            new User("js223kz", "Falsterbo"," ", 1.4567899)
-        }
-        expect(withoutLat()).to.throw;
-        done();
+    it('city can not be empty', () => {
+      () => {
+        user.city = '';
+      }.should.throw(Error);
     });
     
-    it('should not be valid with empty longitude', function(done){
-        function withoutLon() {
-            new User("js223kz", "Falsterbo", 1.4567899, "")
-        }
-        expect(withoutLon()).to.throw;
-        done();
+    it('latitude can not be empty', () => {
+      () => {
+        user.lat = '';
+      }.should.throw(Error);
     });
     
-    it('should only accept numeric latitude', function(done){
-        function notNumeric() {
-            new User("js223kz", "Falsterbo","jkashjahk", 1.4567899)
-        }
-        expect(notNumeric()).to.throw;
-        done();
+    it('logitude can not be empty', () => {
+      () => {
+        user.lng = '';
+      }.should.throw(Error);
     });
     
-    it('should only accept numeric longitude', function(done){
-        function notNumeric() {
-            new User("js223kz", "Falsterbo", 1.4567899, "jfjiwjefoji")
-        }
-        expect(notNumeric()).to.throw;
-        done();
+    it('logitude can not be a string', () => {
+      () => {
+        user.lng = '7667812';
+      }.should.throw(Error);
     });
     
+    it('latitude can not be a string', () => {
+      () => {
+        user.lat = '7667812';
+      }.should.throw(Error);
+    });
+
+    it('logitude can be a number', () => {
+      () => {
+        user.lng = 3.678927;
+      }.should.not.throw(Error);
+    });
+    
+     it('latitude can be a number', () => {
+      () => {
+        user.lat = 3.678927;
+      }.should.not.throw(Error);
+    });
 });

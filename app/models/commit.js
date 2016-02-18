@@ -1,6 +1,5 @@
 "use strict";
 
-
 class Commit{
     constructor(owner, commitUser, timeStamp, code) {
         this._owner = owner;
