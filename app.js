@@ -18,6 +18,8 @@ app.set('views', __dirname + '/app/view/');
 //from remote source
 app.use("/files", express.static(__dirname + '/files'));
 
+app.use("/models", express.static(__dirname + '/models'));
+
 
 //view engine = ejs
 app.set('view engine', 'ejs');
