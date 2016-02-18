@@ -1,7 +1,7 @@
 "use strict";
 
  let fs = require('fs'),
-     User = require('../../app/models/User'),
+     User = require('../../app/models/user'),
      request = require('request');
      
     
