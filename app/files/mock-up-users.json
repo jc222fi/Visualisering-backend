@@ -54,5 +54,19 @@
     },
     "studentType":"distance",
     "username":"mw222rs"
+  },
+    {
+    "city":"Växjö",
+    "lat":"56.884362",
+    "lng":"14.805126",
+    "created":"2015-08-27T13:33:33.607Z",
+    "firstname":"Robin",
+    "lastname":"Karlsson",
+    "program":"student",
+    "services":{
+      "github":"rk222ev"
+    },
+    "studentType":"distance",
+    "username":"rk222ev"
   }
 ]

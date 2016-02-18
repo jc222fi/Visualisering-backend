@@ -7,13 +7,14 @@ var express = require("express"),
 
 app = express();
 routes(app);
-//startar servern
 
-//This line shhould be removed when
+
+//This line should be removed when
 //students json is reaquested
 //from remote source
 app.use("/files", express.static(__dirname + '/files'));
 
+//startar servern
 var start = exports.start = function(){
     server = app.listen(8080);
     console.log('server');

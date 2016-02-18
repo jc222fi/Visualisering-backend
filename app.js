@@ -15,7 +15,7 @@ app.set('views', __dirname + '/app/view/');
 //view engine = ejs
 app.set('view engine', 'ejs');
 
-
+ 
 routes(app);
 
 //startar servrar
@@ -25,6 +25,7 @@ routes(app);
 var start = exports.start = function(){
     server.listen(app.get('port'));
     console.log('server');
+   
 };
 
 var stop = exports.stop = function(){

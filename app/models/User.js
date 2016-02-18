@@ -9,6 +9,7 @@ class User {
     }
     
     set userName(value) {
+        console.log("går iallafall in i denna");
         if (!value) {
           throw Error('Username must have a value');
         }

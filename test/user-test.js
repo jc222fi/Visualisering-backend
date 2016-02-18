@@ -1,15 +1,8 @@
 "use strict";
 
 let chai = require('chai'),
-    chaiAsPromised = require("chai-as-promised"),
-    should = require('chai').should(),
     expect = require('chai').expect,
-    assert = require('assert'),
-    supertest = require('supertest'),
-    request = require('superagent'),
     User = require('../app/models/user.js');
-
-chai.use(chaiAsPromised);
 
 describe('User object',function(){
     it('should be a valid user object', function(done){
