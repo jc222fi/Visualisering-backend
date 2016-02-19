@@ -1,17 +1,19 @@
-"use strict";
+/*"use strict";
 let chai = require('chai'),
     chaiAsPromised = require("chai-as-promised"),
     should = require('chai').should(),
     expect = require('chai').expect,
     supertest = require('supertest'),
     local = supertest('http://localhost:8080'),
-    app = require('../app/app');
+    app = require('../app.js');
 
 chai.use(chaiAsPromised);
 //url should be read from config file
-describe('Testing user-api', function () {
-    let baseUrl = '/files/mock-up-users.json';
-    it('should return a 200 response', function (done) {
+
+
+describe('Testing user-api', function (app) {
+    let baseUrl = 'files/mock-up-users.json';
+    it('should return json', function (done) {
         local.get(baseUrl)
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
@@ -33,4 +35,6 @@ describe('Testing user-api', function () {
             done();
         })
     });
-});
+});*/
+
+

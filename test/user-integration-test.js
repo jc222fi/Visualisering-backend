@@ -1,4 +1,6 @@
-"use strict";
+//shuld be rewritten
+
+/*"use strict";
 let chai = require('chai'),
     chaiAsPromised = require("chai-as-promised"),
     should = require('chai').should(),
@@ -43,4 +45,4 @@ describe('Create User with data from api', function(){
         })
     done();
     })
-});
+});*/
