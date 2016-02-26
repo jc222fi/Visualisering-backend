@@ -34,7 +34,7 @@ const initialState = JSON.stringify({
 //websocketServer
 module.exports = {
     startWebsocketServer(){
-        var wss = new WebSocketServer({port:5000});
+        var wss = new WebSocketServer({port:(process.env.PORT || 5000)});
         wss.on('connection', (ws)=>{
             ws.on('message', (message)=>{
                 console.log('received: %s', message);
