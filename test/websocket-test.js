@@ -1,6 +1,6 @@
 'use strict';
 
-var expect = require('chai').expect,
+let expect = require('chai').expect,
     supertest = require('supertest'),
     websocket = require('../app/controller/websocket.js'),
     app = require('../app.js');

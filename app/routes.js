@@ -8,6 +8,15 @@ module.exports = function(app){
     app.get('/',function(req, res){
         res.send('Hej front-end');
     })
+    
+    //Receives post from github  when push
+    //is made to one of those registrered organisations
+    app.post('/githubpush', function(req,res){
+        console.log(req);
+        res.send(req.body);
+    });
+    
+    //this is just to test integration flow
     app.get('/latlong', function(req,res){
         let userApi = new UserApi();
         userApi.getUsers().then(function(users){
@@ -26,10 +35,11 @@ module.exports = function(app){
         res.send("hello from latlong");
     });
     
+    //testing response from github
     app.get('/code', function(req,res){
         extractor.fetch("http://github.com/", { selector: "div.header", innerText: true }, function(data){
             console.log(data);
         });
-        res.send("hello from latlong");
-    });   
+        res.send("hello from code");
+    });    
 }
