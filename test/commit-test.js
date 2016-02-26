@@ -13,7 +13,6 @@ describe('Commit object',function(){
     beforeEach(() => {
         user = new User("js223kz", "Falsterbo", 1.2345677, 1.4567899);
         commit = new Commit("Visualisering", user, '2011-09-06T20:39:23Z','{let person = new Person();}'); 
-        //done();
     }); 
     it('should return an object', () => {
         expect(commit).to.be.an('object');
