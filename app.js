@@ -29,7 +29,7 @@ routes(app);
 
 //startar servrar
     server = exports.server = http.createServer(app);
-    websocket.startWebsocketServer();
+    websocket.startWebsocketServer(server);
 
 var start = exports.start = function(){
     server.listen(app.get('port'));
