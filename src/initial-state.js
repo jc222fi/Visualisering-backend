@@ -9,5 +9,29 @@ module.exports = {
             {lat: 0, lng: -90, time: 1204},
             {lat: 0, lng: 0, time: 10}
         ]
+    },
+    commits:{
+        data:[
+            {
+                author: {
+                    name: "Mattias",
+                    email: "mw222rs@student.lnu.se",
+                    date: "2016-02-24T19:47:38Z"
+                },
+                committer: {
+                    name: "Mattias",
+                    email: "mw222rs@student.lnu.se",
+                    date: "2016-02-24T19:47:38Z"
+                },
+                message: "merge and eslint fix",
+                tree: {
+                    sha: "00e20aaad49d486b5ec8284ba2093a861c6ed104",
+                    url: "https://api.github.com/repos/mw222rs/hulot/git/trees/00e20aaad49d486b5ec8284ba2093a861c6ed104"
+                },
+                url: "https://api.github.com/repos/mw222rs/hulot/git/commits/1e879e516b46b91f891cdafbc22b71f558caafaf",
+                comment_count: 0
+                }
+        ]
     }
+    
 };

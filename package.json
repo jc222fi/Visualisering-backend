@@ -12,9 +12,10 @@
   "license": "ISC",
   "dependencies": {
     "eslint": "^2.2.0",
+    "eslint-config-google": "^0.4.0",
+    "lodash": "^4.5.1",
     "redux": "^3.3.1",
     "redux-thunk": "^1.0.3",
-    "ws": "^1.0.1",
-    "eslint-config-google": "^0.4.0"
+    "ws": "^1.0.1"
   }
 }
