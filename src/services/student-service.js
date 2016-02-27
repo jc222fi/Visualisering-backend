@@ -9,7 +9,6 @@ module.exports = {
   },
 
   find_by_username(username) {
-
     return new Promise((resolve, reject) => {
       resolve(_.find(students, o => o.username === username));
     });
