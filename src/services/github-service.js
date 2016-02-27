@@ -33,13 +33,8 @@ module.exports  = {
     };
     return new Promise((resolve, reject) => {
       request.get(options, (err, res) => {
-        if (err) { 
-          reject(err);
-        }
-        
-        const commits = JSON.parse(res.body).map(commit => commit.commit.committer);
-        
-        resolve(commits);
+        err ? reject(err)
+            : resolve(JSON.parse(res.body).map(commit => commit.commit.committer));
       });
     });
   }
