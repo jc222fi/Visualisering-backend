@@ -31,16 +31,16 @@ module.exports  = {
       },
       url: `https://api.github.com/repos/${owner}/${repo}/commits`
     };
-
-    request.get(options, (err, res) => {
-      // TODO: Handle commit data
-      // add to data store or something
-      console.log(
-        JSON.parse(res.body).map(commit => {
-          return commit.commit.committer;
-        })
-      );
+    return new Promise((resolve, reject) => {
+      request.get(options, (err, res) => {
+        if (err) { 
+          reject(err);
+        }
+        
+        const commits = JSON.parse(res.body).map(commit => commit.commit.committer);
+        
+        resolve(commits);
+      });
     });
-
   }
 };
