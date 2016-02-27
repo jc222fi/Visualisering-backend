@@ -1,4 +1,3 @@
-const _ = require("lodash");
 const students = require("../../datasets/students");
 
 module.exports = {
@@ -10,7 +9,7 @@ module.exports = {
 
   find_by_username(username) {
     return new Promise((resolve, reject) => {
-      resolve(_.find(students, o => o.username === username));
+      resolve(students.find(o => o.username === username));
     });
   }
 
