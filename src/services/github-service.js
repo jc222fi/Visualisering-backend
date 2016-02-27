@@ -6,7 +6,7 @@ module.exports  = {
   //
   // Returns an array of commits
   //
-  // Parammeters:
+  // Parameters:
   //  owner: string with organisation or github user
   //  repo: string with the repository name
   //
