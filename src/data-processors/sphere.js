@@ -3,15 +3,14 @@ const studentService = require("../services/student-service");
 
 function process(commits) {
   return Promise.all(commits.map(commit => {
-      return new Promise((resolve, reject) => {
-        username = commit.email.split("@")[0];
-        studentService.find_by_username(username)
-                      .then(student => { resolve({ lng: student.lng,
-                                                   lat: student.lat,
-                                                   time: Date.parse(commit.date) })});
-      });
-    })
-  )
+    return new Promise((resolve, reject) => {
+      username = commit.email.split("@")[0];
+      studentService.find_by_username(username)
+                    .then(student => { resolve({ lng: student.lng,
+                                                  lat: student.lat,
+                                                  time: Date.parse(commit.date) })});
+    });
+  }))
 }
 
 module.exports = {
