@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha test/**/*test.js",
     "lint": "eslint src/**/*.js test/**/*.js",
-    "start": "node app.js"
+    "start": "node src/app.js"
   },
   "author": "",
   "license": "ISC",
