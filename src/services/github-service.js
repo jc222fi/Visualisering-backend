@@ -15,12 +15,6 @@ module.exports  = {
   //   [ { name: 'Sonny',
   //       email: 'sk222sw@student.lnu.se',
   //       date: '2016-02-18T21:28:33Z' },
-  //     { name: 'Sonny Kjellberg',
-  //       email: 'sk222sw@student.lnu.se',
-  //       date: '2016-02-18T18:03:11Z' },
-  //     { name: 'Mattias',
-  //       email: 'mw222rs@student.lnu.se',
-  //       date: '2016-02-18T15:53:50Z' },
   //     { name: 'Mattias',
   //       email: 'mw222rs@student.lnu.se',
   //       date: '2016-02-18T08:53:22Z' } ]
