@@ -7,8 +7,8 @@ function process(commits) {
       username = commit.email.split("@")[0];
       studentService.find_by_username(username)
                     .then(student => { resolve({ lng: student.lng,
-                                                  lat: student.lat,
-                                                  time: Date.parse(commit.date) })});
+                                                 lat: student.lat,
+                                                 time: Date.parse(commit.date) })});
     });
   }))
 }
