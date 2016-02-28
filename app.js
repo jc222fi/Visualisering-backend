@@ -5,7 +5,7 @@ const store = require("./src/store/store");
 const sphere = require("./src/data-processors/sphere");
 
 const server = httpServer.init();
-const wss = new WebSocketServer({ server: server });
+const wss = new WebSocketServer({server});
 
 // Hookup datastore and processors
 sphere.dataSet()

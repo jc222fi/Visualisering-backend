@@ -3,7 +3,7 @@ const http = require('http');
 module.exports = {
 
   init() {
-    server = http.createServer(function (req, res) {
+    server = http.createServer((req, res) => {
       // set up some routes
       switch(req.url) {
         case '/':
