@@ -18,18 +18,27 @@ store.subscribe(
 
       console.log(storeData);
 
-      wss.broadcast(storeData);
+      wss.broadcast(JSON.stringify(storeData));
     }
   }
 );
 
 wss.broadcast = data => wss.clients.forEach(client => client.send(data));
 
-wss.on('connection', ws => {
-  ws.send("Client connected");
+wss.on("connection", ws => {
+  const action = JSON.stringify({type: "WS_CONNECTED"});
+  ws.send(action);
+  // ws.send(JSON.stringify(store.getState()));
 
   ws.on("message", message => {
-    // Respond to requests
-    console.log(`Received message from client: ${message}`)
-  })
+    try {
+      const action = JSON.parse(message);
+      console.log("Received action from client:");
+      console.log(action);
+      // store.dispatch(action);
+    } catch (e) {
+      console.error(e.message);
+      ws.send("Unable to parse JSON string.");
+    }
+  });
 });
