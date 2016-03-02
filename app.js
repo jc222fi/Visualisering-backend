@@ -14,11 +14,12 @@ sphere.dataSet()
 store.subscribe(
   () => {
     if (store.getState()) {
-      const storeData = store.getState();
+      const data = store.getState();
+      const action = JSON.stringify({type: "BACKEND_DATA", data});
 
-      console.log(storeData);
+      console.log(data);
 
-      wss.broadcast(JSON.stringify(storeData));
+      wss.broadcast(action);
     }
   }
 );
@@ -28,14 +29,13 @@ wss.broadcast = data => wss.clients.forEach(client => client.send(data));
 wss.on("connection", ws => {
   const action = JSON.stringify({type: "WS_CONNECTED"});
   ws.send(action);
-  // ws.send(JSON.stringify(store.getState()));
 
   ws.on("message", message => {
-    try {
+    try { // Using a try-catch because JSON.parse explodes on invlaid JSON.
       const action = JSON.parse(message);
       console.log("Received action from client:");
       console.log(action);
-      // store.dispatch(action);
+      store.dispatch(action);
     } catch (e) {
       console.error(e.message);
       ws.send("Unable to parse JSON string.");

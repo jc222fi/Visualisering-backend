@@ -1,6 +1,6 @@
 const request = require("request");
 
-module.exports  = {
+module.exports = {
 
   // Requests the latest Github commits from a repo
   //
@@ -26,10 +26,11 @@ module.exports  = {
       url: `https://api.github.com/repos/${owner}/${repo}/commits`
     };
     return new Promise((resolve, reject) => {
-      request.get(options, (err, res) => {
-        err ? reject(err)
-            : resolve(JSON.parse(res.body).map(commit => commit.commit.committer));
-      });
+      request.get(options,
+        (err, res) => err ?
+          reject(err) :
+          resolve(JSON.parse(res.body).map(commit => commit.commit.committer))
+      );
     });
   }
 };
