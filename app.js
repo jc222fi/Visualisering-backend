@@ -1,35 +1,44 @@
-"use strict";
-var express = require("express"),
-    routes = require('./app/routes.js'),
-    ejs = require('ejs'),
-    websocket = require('./app/controller/websocket.js'),
-    http = require('http'),
-    app,
-    server;
+const WebSocketServer = require("ws").Server;
+const httpServer = require("./src/lib/http-server");
+const actions = require("./src/store/actions");
+const store = require("./src/store/store");
+const sphere = require("./src/data-processors/sphere");
 
-app = express();
-app.set('port', (process.env.PORT || 8080));
-app.use(express.static(__dirname+'/app/view/'));
-app.set('views', __dirname + '/app/view/');
+const server = httpServer.init();
+const wss = new WebSocketServer({server});
 
-//view engine = ejs
-app.set('view engine', 'ejs');
+// Hookup datastore and processors
+sphere.dataSet()
+  .then(commits => store.dispatch(actions.addLatestCommits(commits)));
 
+store.subscribe(
+  () => {
+    if (store.getState()) {
+      const data = store.getState();
+      const action = JSON.stringify({type: "BACKEND_DATA", data});
 
-routes(app);
+      console.log(data);
 
-//startar servrar
-    server = exports.server = http.createServer(app);
-    websocket.startWebsocketServer(server);
+      wss.broadcast(action);
+    }
+  }
+);
 
-var start = exports.start = function(){
-    server.listen(app.get('port'));
-    console.log('server');
-};
+wss.broadcast = data => wss.clients.forEach(client => client.send(data));
 
-var stop = exports.stop = function(){
-    console.log('close');
-    server.close();
-};
+wss.on("connection", ws => {
+  const action = JSON.stringify({type: "WS_CONNECTED"});
+  ws.send(action);
 
-start();
+  ws.on("message", message => {
+    try { // Using a try-catch because JSON.parse explodes on invlaid JSON.
+      const action = JSON.parse(message);
+      console.log("Received action from client:");
+      console.log(action);
+      store.dispatch(action);
+    } catch (e) {
+      console.error(e.message);
+      ws.send("Unable to parse JSON string.");
+    }
+  });
+});

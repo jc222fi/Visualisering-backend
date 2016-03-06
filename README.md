@@ -1,10 +1,13 @@
-# Visualisering-backend
+## Node with redux data store
 
-[![Stories in Ready](https://badge.waffle.io/Visualisering/Visualisering-backend.png?label=ready&title=Ready)](https://waffle.io/Visualisering/Visualisering-backend)
-[![Build Status](https://travis-ci.org/Visualisering/Visualisering-backend.svg?branch=master)](https://travis-ci.org/Visualisering/Visualisering-backend)
+Start server
 
-[![Throughput Graph](https://graphs.waffle.io/Visualisering/Visualisering-backend/throughput.svg)](https://waffle.io/Visualisering/Visualisering-backend/metrics)
+```shell
+$ npm start
+```
 
+Connect to websocket
 
-
-
+```shell
+$ wscat -c ws://localhost:5000
+```
